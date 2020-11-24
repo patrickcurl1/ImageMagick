@@ -23,9 +23,9 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
     POWERSHELL_DISTRIBUTION_CHANNEL=PSDocker-Ubuntu-18.04
 
 # Install dependencies and clean up
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-    ghostscript
+#RUN apt-get update \
+#    && apt-get install --no-install-recommends -y \
+#    ghostscript
 
 # Define args needed only for the labels
 ARG VCS_REF="none"
