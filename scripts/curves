@@ -6,7 +6,7 @@
 # 
 # Licensing:
 # 
-# Copyright © Fred Weinhaus
+# Copyright ï¿½ Fred Weinhaus
 # 
 # My scripts are available free of charge for non-commercial use, ONLY.
 # 
@@ -363,16 +363,16 @@ fi
 # cubic spline interpolate using parametric format
 # x=a0+a1*s+a2*s^2+a3*s^3
 # y=b0+b1*s+b2*s^2+b3*s^3
-# Q=C¥S; where Q=(x;y)=polynomial coordinate (column) vector
+# Q=Cï¿½S; where Q=(x;y)=polynomial coordinate (column) vector
 # and C=(a3 a2 a1 a0; b3 b2 b1 b0)=coefficient matrix with a's and b's as rows; 
 # and S=(s^3 s^2 s 1)=parametric (row) vector
 
-# spline formulation often represented as: Q=S¥M¥V
+# spline formulation often represented as: Q=Sï¿½Mï¿½V
 # where M=matrix which depends upon the type of spline 
 # and V is the control (column) vector (often either a set of knots or derivatives; knots being data points)
-# x=(s^3 s^2 s 1)¥M¥Vx where Vx is (column) vector of four components (knots, tangents or contol point)
-# y=(s^3 s^2 s 1)¥M¥Vx where Vx is (column) vector of four components (knots, tangents or control points)
-# (alternate form is P=Vt¥Mt*Vt; Vt=V transposed so is a row vector; Mt=M transposed)
+# x=(s^3 s^2 s 1)ï¿½Mï¿½Vx where Vx is (column) vector of four components (knots, tangents or contol point)
+# y=(s^3 s^2 s 1)ï¿½Mï¿½Vx where Vx is (column) vector of four components (knots, tangents or control points)
+# (alternate form is P=Vtï¿½Mt*Vt; Vt=V transposed so is a row vector; Mt=M transposed)
 
 # see references:
 # http://icie.cs.byu.edu/UIBook/12-2DGeometry.pdf

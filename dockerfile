@@ -8,7 +8,7 @@ ARG fromTag=18.04
 ARG imageRepo=ubuntu
 
 #FROM ${imageRepo}:${fromTag} AS installer-env
-FROM ubuntu:18.04
+FROM dpokidov/imagemagick
 
 ARG PS_VERSION=6.2.0
 ARG PS_PACKAGE=powershell_${PS_VERSION}-1.ubuntu.18.04_amd64.deb
@@ -29,8 +29,8 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
 
 # Define args needed only for the labels
 ARG VCS_REF="none"
-#ARG IMAGE_NAME=mcr.microsoft.com/powershell:ubuntu18.04
-ARG IMAGE_NAME=dpokidov/imagemagick
+ARG IMAGE_NAME=mcr.microsoft.com/powershell:ubuntu18.04
+#ARG IMAGE_NAME=dpokidov/imagemagick
 # copy scripts folder in to container
 RUN mkdir /scripts
 COPY ./scripts /scripts
