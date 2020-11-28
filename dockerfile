@@ -1,14 +1,14 @@
 # Docker image file that describes an Ubuntu18.04 image with PowerShell installed from Microsoft APT Repo
-ARG fromTag=20.04
+ARG fromTag=18.04
 ARG imageRepo=ubuntu
 ARG RELEASE=latest
 
 # Docker image file that describes an Ubuntu18.04 image with PowerShell installed from Microsoft APT Repo
-ARG fromTag=20.04
+ARG fromTag=18.04
 ARG imageRepo=ubuntu
 
 #FROM ${imageRepo}:${fromTag} AS installer-env
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 ARG PS_VERSION=6.2.0
 ARG PS_PACKAGE=powershell_${PS_VERSION}-1.ubuntu.18.04_amd64.deb
@@ -28,8 +28,6 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
 #    ghostscript
 # set TZ to get rid of error in build process
 RUN cd $home && \
-DEBIAN_FRONTEND=noninteractive \
-    TZ=America/Chicago \
     apt-get -y update && \
     apt-get -y upgrade && \
     apt-get install -y git make gcc pkg-config autoconf curl g++ && \
