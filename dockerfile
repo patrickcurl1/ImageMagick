@@ -27,11 +27,10 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
 #    && apt-get install --no-install-recommends -y \
 #    ghostscript
 # set TZ to get rid of error in build process
-RUN DEBIAN_FRONTEND=noninteractive \
-    TZ=America/Chicago \
-    apt-get update && apt-get install -y   
 RUN cd $home && \
-apt-get -y update && \
+DEBIAN_FRONTEND=noninteractive \
+    TZ=America/Chicago \
+    apt-get -y update && \
     apt-get -y upgrade && \
     apt-get install -y git make gcc pkg-config autoconf curl g++ && \
 apt-get install -y autoconf automake autopoint autotools-dev build-essential chrpath \
