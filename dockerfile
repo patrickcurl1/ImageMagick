@@ -26,6 +26,10 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
 #RUN apt-get update \
 #    && apt-get install --no-install-recommends -y \
 #    ghostscript
+# set TZ to get rid of error in build process
+RUN DEBIAN_FRONTEND=noninteractive \
+    TZ=America/Chicago \
+    apt-get update && apt-get install -y   
 RUN cd $home && \
 apt-get -y update && \
     apt-get -y upgrade && \
