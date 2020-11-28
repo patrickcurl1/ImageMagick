@@ -71,7 +71,7 @@ tar -xzvf libheif.tar.gz && \
 cd libheif-1.9.1 && \
 ./autogen.sh && ./configure && make && make install && cd .. && ldconfig /usr/local/lib  && \
 cd $HOME && \
-git clone https://github.com/ImageMagick/ImageMagick.git && \
+git clone https://github.com/ImageMagick/ImageMagick.git && make install && \
 cd ImageMagick  && \
 ./configure --with-rsvg && make && \
 make distclean && sudo ldconfig

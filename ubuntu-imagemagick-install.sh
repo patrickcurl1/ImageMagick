@@ -41,5 +41,5 @@ cd libheif-1.9.1 && \
 cd $HOME && \
 git clone https://github.com/ImageMagick/ImageMagick.git && \
 cd ImageMagick  && \
-./configure --with-rsvg && make && \
+./configure --with-rsvg && make && make install && \
 make distclean && sudo ldconfig
