@@ -32,9 +32,14 @@ ENV TZ=America/Chicago
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-RUN cd $home && \
-    apt-get -y update && \
-    apt-get -y upgrade && \
+RUN export LC_ALL="en_US.UTF-8"
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    locales \
+    locales-all
+
+RUN apt-get update && \
+    apt-get upgrade && \
     apt-get install -y git make gcc pkg-config autoconf curl g++ && \
 apt-get install -y autoconf automake autopoint autotools-dev build-essential chrpath \
 cm-super-minimal debhelper dh-autoreconf dh-exec dh-strip-nondeterminism doxygen \
@@ -46,6 +51,9 @@ libfftw3-long3 libfftw3-quad3 libfile-stripnondeterminism-perl libfontconfig1-de
 libfreetype6-dev libgcc-7-dev libgdk-pixbuf2.0-dev libglib2.0-dev libglib2.0-dev-bin \
 libgraphite2-dev libgts-0.7-5 libgvc6 libgvpr2 libharfbuzz-dev libharfbuzz-gobject0 \
 libice-dev libilmbase-dev \
+tex-common texlive-base texlive-binaries texlive-extra-utils texlive-font-utils \
+texlive-fonts-recommended texlive-latex-base texlive-latex-extra \
+texlive-latex-recommended texlive-pictures \
 libitm1 libjbig-dev libjpeg-dev libjpeg-turbo8-dev libjpeg8-dev liblab-gamut1 \
 liblcms2-dev liblqr-1-0-dev liblsan0 libltdl-dev liblzma-dev libmime-charset-perl \
 libmpx2 libopenexr-dev libpango1.0-dev libpathplan4 libpcre16-3 libpcre3-dev \
@@ -57,26 +65,29 @@ libtsan0 libubsan0 libunicode-linebreak-perl libwmf-dev libx11-dev libxau-dev \
 libxcb-render0-dev libxcb-shm0-dev libxcb1-dev libxdmcp-dev libxext-dev libxft-dev \
 libxml2-dev libxml2-utils libxrender-dev libxt-dev libzzip-0-13 linux-libc-dev m4 \
 make pkg-config pkg-kde-tools po-debconf preview-latex-style \
-tex-common \
-texlive-base texlive-binaries texlive-extra-utils texlive-font-utils \
-texlive-fonts-recommended texlive-latex-base texlive-latex-extra \
-texlive-latex-recommended texlive-pictures x11proto-core-dev x11proto-dev \
+x11proto-core-dev x11proto-dev \
 x11proto-xext-dev xorg-sgml-doctools xsltproc xtrans-dev zlib1g-dev \
 checkinstall libwebp-dev libopenjp2-7-dev librsvg2-dev libde265-dev libheif-dev \
-cmake yasm && \
-git clone https://aomedia.googlesource.com/aom && \
+cmake yasm 
+
+RUN cd $home 
+RUN git clone https://aomedia.googlesource.com/aom && \
 mkdir build_aom && \
 cd build_aom && \
 cmake ../aom/ -DENABLE_TESTS=0 -DBUILD_SHARED_LIBS=1 && make && make install && ldconfig /usr/local/lib && cd .. && \
 curl -L https://github.com/strukturag/libheif/releases/download/v1.9.1/libheif-1.9.1.tar.gz -o libheif.tar.gz && \
 tar -xzvf libheif.tar.gz && \
 cd libheif-1.9.1 && \
-./autogen.sh && ./configure && make && make install && cd .. && ldconfig /usr/local/lib  && \
-cd $HOME && \
-git clone https://github.com/ImageMagick/ImageMagick.git && make install && \
-cd ImageMagick  && \
-./configure --with-rsvg && make && \
-make distclean && sudo ldconfig
+./autogen.sh && ./configure && make && make install && cd .. && ldconfig /usr/local/lib
+
+RUN cd $home 
+RUN git clone https://github.com/ImageMagick/ImageMagick.git && cd ImageMagick && \
+ ls && \
+ ./configure --with-rsvg && \
+ make && \
+ make install && \
+ make distclean && \
+ ldconfig
 
 # Define args needed only for the labels
 ARG VCS_REF="none"
