@@ -27,6 +27,11 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
 #    && apt-get install --no-install-recommends -y \
 #    ghostscript
 # set TZ to get rid of error in build process
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install tzdata
+ENV TZ=America/Chicago
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+
 RUN cd $home && \
     apt-get -y update && \
     apt-get -y upgrade && \
