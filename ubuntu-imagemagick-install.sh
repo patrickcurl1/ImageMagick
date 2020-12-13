@@ -43,3 +43,4 @@ git clone https://github.com/ImageMagick/ImageMagick.git && \
 cd ImageMagick  && \
 ./configure --with-rsvg && make && make install && \
 make distclean && sudo ldconfig
+ldconfig
