@@ -14,6 +14,7 @@
 # thresh is the threshold in percent to find the x or y coordinate from the
 # sides where the graylevel first reaches the threshold value above 0 (black)
 # Nominal value is 1
+# find out what nominal value is
 
 # deskew is a flag to specify whether to deskew or not. 
 # Values are: yes or no
