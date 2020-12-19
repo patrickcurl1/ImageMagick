@@ -68,6 +68,7 @@ make pkg-config pkg-kde-tools po-debconf preview-latex-style \
 x11proto-core-dev x11proto-dev \
 x11proto-xext-dev xorg-sgml-doctools xsltproc xtrans-dev zlib1g-dev \
 checkinstall libwebp-dev libopenjp2-7-dev librsvg2-dev libde265-dev libheif-dev \
+libapt-pkg5.0 libc-bin libc6 \
 cmake yasm 
 
 RUN cd $home 
