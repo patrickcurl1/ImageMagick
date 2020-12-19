@@ -38,9 +38,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
     locales-all
 
-RUN apt-get update && \
-    apt-get upgrade && \
-    apt-get install -y git make gcc pkg-config autoconf curl g++ && \
+RUN apt-get update && apt-get install -y \
+git make gcc pkg-config autoconf curl g++ && \
 apt-get install -y autoconf automake autopoint autotools-dev build-essential chrpath \
 cm-super-minimal debhelper dh-autoreconf dh-exec dh-strip-nondeterminism doxygen \
 doxygen-latex dpkg-dev fonts-lmodern g++ g++-7 gcc gcc-7 gir1.2-harfbuzz-0.0 graphviz \
