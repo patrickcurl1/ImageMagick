@@ -6,7 +6,7 @@ mkdir /Images/out
 echo "$tiffile"
 tifpath=${tiffile:2}
 echo $tifpath
-tifout=./out/$tifpath
+tifout=/Images/out/$tifpath
 echo $tifout
 if [ -f "$tifout" ]; then
 echo "$tifout exists."
