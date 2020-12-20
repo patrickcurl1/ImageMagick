@@ -96,6 +96,7 @@ ARG IMAGE_NAME=mcr.microsoft.com/powershell:ubuntu18.04
 # copy scripts folder in to container
 RUN mkdir /scripts
 COPY ./scripts /scripts
+RUN chmod -r /scripts
 #CMD /scripts/pdf-compress.sh
 #RUN chmod +x /scripts/pdf-compress.sh
 #ENTRYPOINT ["/scripts/pdf-compress.sh"]
