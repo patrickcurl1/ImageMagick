@@ -1,7 +1,7 @@
-cd /Image
-find . -name "*.tif" -print0 | while read -d $'\0' tiffile
+#cd /Image
+find /Images -name "*.tif" -print0 | while read -d $'\0' tiffile
 do
-mkdir out
+mkdir /Images/out
 echo "$tiffile"
 tifpath=${tiffile:2}
 echo $tifpath
