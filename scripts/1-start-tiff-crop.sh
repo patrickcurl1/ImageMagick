@@ -1,13 +1,20 @@
 #! /usr/bin/env bash
-#cd /Image
-find /Images -name "*.tif" -print0 | while read -d $'\0' tiffile
+cd /Image
+find . -name "*.tif" -print0 | while read -d $'\0' tiffile
 do
 mkdir /Images/out
 echo "$tiffile"
 tifpath=${tiffile:2}
 echo $tifpath
-tifout=/Images/out/$tifpath
+tifout=./out/$tifpath
 echo $tifout
+filepath="$(dirname "${tifout}")"
+echo $filepath
+if [ ! -d $filepath ]
+then
+  mkdir -p $filepath
+fi
+
 if [ -f "$tifout" ]; then
 echo "$tifout exists."
 else 
