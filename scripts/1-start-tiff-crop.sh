@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-cd /Image
+cd /Images
 find . -name "*.tif" -print0 | while read -d $'\0' tiffile
 do
 mkdir /Images/out
