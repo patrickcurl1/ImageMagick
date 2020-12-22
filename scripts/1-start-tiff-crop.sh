@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 cd /Images
-find . -name "*.tif" -not -path ./out -print0 | while read -d $'\0' tiffile
+find . -name "*.tif" -not -path "./out/*" -print0 | while read -d $'\0' tiffile
 do
 mkdir /Images/out
 echo "$tiffile"
