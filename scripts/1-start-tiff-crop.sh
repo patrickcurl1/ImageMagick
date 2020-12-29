@@ -1,11 +1,12 @@
 #! /usr/bin/env bash
 cd /Images
+mkdir /Images/out
 counter=1
 until [ $counter -lt 0 ]
 do
-find . -name "*.tif" -not -path "./out/*" -print0 | while read -d $'\0' tiffile
+#find . -name "*.tif" -not -path "./out/*" -print0 | while read -d $'\0' tiffile
+find . -type f \( -iname \*.tif -o -iname \*.jpg -o -iname \*.jpeg \) -not -path "./out/*" -print0 | while read -d $'\0' tiffile
 do
-mkdir /Images/out
 echo "image to be processed = $tiffile"
 tifpath=${tiffile:2}
 echo "image path = $tifpath"
